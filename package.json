@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rebecatschiedel/Landing-page#readme",
   "devDependencies": {
+    "@types/express": "^4.17.11",
     "@types/node": "^10.17.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
