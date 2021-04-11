@@ -37,6 +37,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+if (!process.env.MONGODB_URL) throw new Error("MONGODB_URL must be set");
+
 // MongoDB
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
