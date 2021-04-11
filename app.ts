@@ -124,4 +124,4 @@ app.use("/photos", require("./routes/photos"));
 app.use("/profile", require("./routes/profile"));
 app.use("/error", require("./routes/error"));
 
-app.listen(PORT, console.log(`Server running on port: ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
