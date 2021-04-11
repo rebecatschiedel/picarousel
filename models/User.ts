@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     },
     googleId: {
-        type: String   
+        type: String
     },
     facebookId: {
         type: String
@@ -25,9 +25,9 @@ const UserSchema = new mongoose.Schema({
     favoritePhotos: {
         type: Array
     }
-});                
+});
 
-UserSchema.plugin(passportLocalMongoose, {usernameField : 'email'});
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 UserSchema.plugin(findOrCreate);
 
 const User = mongoose.model('User', UserSchema)
