@@ -1,0 +1,30 @@
+extends layout.pug
+
+block content
+    #carouselExampleControls.carousel.slide.carousel-fade(data-bs-ride='carousel')
+        .carousel-inner
+            each photo, index in photos
+                if (index != selectedIndex)
+                    .carousel-item
+                        .card.mb-3
+                            .card-body.body-carousel
+                                h5.card-title= photo[0].tags
+                                if currentUser    
+                                    button(type="button" class="btn favorite toggle-favorite" name=photo[0].id)
+                                        ='Remove from Favorites'
+                            img.d-block.w-100.card-img-bottom(src=photo[0].webformatURL alt=photo[0].tags)            
+                else
+                    .carousel-item.active
+                        .card.mb-3
+                            .card-body.body-carousel
+                                h5.card-title= photo[0].tags
+                                if currentUser 
+                                    button(type="button" class="btn favorite toggle-favorite" name=photo[0].id)
+                                        ='Remove from Favorites' 
+                            img.d-block.w-100.card-img-bottom(src=photo[0].webformatURL alt=photo[0].tags)            
+        button.carousel-control-prev(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.visually-hidden Previous
+        button.carousel-control-next(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.visually-hidden Next

@@ -1,0 +1,45 @@
+extends layout.pug
+
+block content
+    .container-fluid.search-bar
+        form#formSearch.d-flex.search(action='/' method='POST')
+            input#formInput.form-control.me-2(type='search' name='search' placeholder='Search Photo Tags...' aria-label='Search')
+            button.btn.btn-outline-success(type='submit') Search
+    section#cards
+        .row.row-cols-1.row-cols-md-3.g-4
+            .col
+                a(href='/photos/landscape')
+                    .card.index-card.bg-dark.text-white.ratio.ratio-4x3
+                        img.index-img.card-img(src='static/images/landscape.jpg' alt='Field with flowers and mountains on the background')
+                        .card-img-overlay.d-flex.align-items-center.justify-content-center
+                            h5.index-title.card-title Landscape
+            .col
+                a(href='/photos/animals')
+                    .card.index-card.bg-dark.text-white.ratio.ratio-4x3
+                        img.index-img.card-img(src='static/images/cat-with-glasses.jpg' alt='Cat with glasses')
+                        .card-img-overlay.d-flex.align-items-center.justify-content-center
+                            h5.index-title.card-title Animals
+            .col
+                a(href='/photos/car')
+                    .card.index-card.bg-dark.text-white.ratio.ratio-4x3
+                        img.index-img.card-img(src='static/images/sports-car.jpg' alt='Black background with a coupe car')
+                        .card-img-overlay.d-flex.align-items-center.justify-content-center
+                            h5.index-title.card-title Cars
+            .col
+                a(href='/photos/food')
+                    .card.index-card.bg-dark.text-white.ratio.ratio-4x3
+                        img.index-img.card-img(src='static/images/food-ingredients.jpg' alt='Pasta ingredients on a table')
+                        .card-img-overlay.d-flex.align-items-center.justify-content-center
+                            h5.index-title.card-title Food
+            .col
+                a(href='/photos/fractal')
+                    .card.index-card.bg-dark.text-white.ratio.ratio-4x3
+                        img.index-img.card-img(src='static/images/fractal-image.jpg' alt='Red and Orange Fractal image')
+                        .card-img-overlay.d-flex.align-items-center.justify-content-center
+                            h5.index-title.card-title Fractal
+            .col
+                a(href='/photos/cities')
+                    .card.index-card.bg-dark.text-white.ratio.ratio-4x3
+                        img.index-img.card-img(src='static/images/vancouver-skyline.jpg' alt='Vancouver skyline')
+                        .card-img-overlay.d-flex.align-items-center.justify-content-center
+                            h5.index-title.card-title Cities

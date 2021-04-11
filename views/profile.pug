@@ -1,0 +1,21 @@
+extends ./layout.pug
+
+block content
+    h3="Favorite photos: "
+        if photos
+            =photos.length
+        else
+            span You did not like any photos yet! Start now! 
+    div.flexbox-profile
+        if photos
+            each photo, index in photos
+                .card.mb-3
+                    a(href="/profile/"+index) 
+                        img.card-img-top(src=photo[0].webformatURL alt=photo[0].tags)            
+                    .card-body.body-profile
+                        h5.card-title= photo[0].tags
+                        button(type="button" class="btn favorite toggle-favorite" name=photo[0].id)
+                            ='Remove from Favorites'
+    form(action="/profile/delete/" + userId, method="post") 
+        button(type="submit" class="btn btn-danger")
+            ='Delete Profile'

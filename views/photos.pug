@@ -1,0 +1,17 @@
+extends ./layout.pug
+
+block content
+  div(class="flexbox-photos")
+    each photo, index in photos
+      .card.mb-3
+        a.photo-anchor(href="/photo/"+index) 
+          img.card-img-top(src=photo.webformatURL alt=photo.tags)
+        .card-body.body-photos
+            h5.card-title= photo.tags
+            if currentUser                
+              - if (favoritedPhotos.includes(photo.id))    
+                  button(type="button" class="btn toggle-favorite favorite" name=photo.id)
+                    i(class="far fa-star fa") Remove from Favorites
+              - else  
+                  button(type="button" class="btn toggle-favorite profile-favorite" name=photo.id)
+                    i(class="far fa-star fa") Add to Favorites

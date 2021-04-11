@@ -1,0 +1,31 @@
+extends ./layout.pug
+
+block content
+    div(class="row mt-5")
+        div(class="col-md-6 m-auto")
+            div(class="card card-body")
+                img(src="../static/images/picarousel-logo.png" id='name-logo' alt="Picarousel Logo") 
+                hr
+                div(class='d-grid gap-2 d-md-flex justify-content-md-center')
+                    a(type="submit" class="btn btn-primary" href='/auth/google') 
+                        i(class="fab fa-google") oogle                                      
+                    a(type="submit" class="btn btn-info" href='/auth/facebook') 
+                        i(class="fab fa-facebook-f") acebook  
+                hr                   
+                include includes/flash.pug
+                form(action="/users/register", method="post" class='validated-form')
+                    div(class="form-group")
+                        label(for='name') Name
+                        input#name(type="text", name="name", class="form-control", placeholder="Enter your name", value=(typeof name === undefined ? '' : name) required)
+                    div(class="form-group")
+                        label(for='email') Email
+                        input#email(type="email", name="email", class="form-control", placeholder="Enter your email", value=(typeof email === undefined ? '' : email) required)
+                    div(class="form-group")
+                        label(for='password') Password
+                        input#password(type="password", name="password", class="form-control", placeholder="Password", value=(typeof password === undefined ? '' : password) required)
+                    div(class="form-group")
+                        label(for='confirmPassword') Confirm password
+                        input#confirmPassword(type="password", name="confirmPassword", class="form-control", placeholder="Confirm password", value=(typeof confirmPassword === undefined ? '' : confirmPassword) required)
+                    button(type="submit" class="btn btn-success btn-block") Register
+                p(class='lead mt-4') Have an account? 
+                    a(href="/users/login") login 
