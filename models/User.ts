@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
-const findOrCreate = require("mongoose-findorcreate");
+import mongoose from "mongoose";
+import passportLocalMongoose from "passport-local-mongoose";
+import findOrCreate from "mongoose-findorcreate";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -32,4 +32,4 @@ UserSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User", UserSchema);
 
-module.exports = User;
+export default User;
