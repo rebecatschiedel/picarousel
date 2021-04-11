@@ -1,4 +1,8 @@
-import mongoose from "mongoose";
+import mongoose, {
+  PassportLocalDocument,
+  PassportLocalModel,
+  PassportLocalSchema,
+} from "mongoose";
 import passportLocalMongoose from "passport-local-mongoose";
 import findOrCreate from "mongoose-findorcreate";
 
@@ -30,6 +34,9 @@ const UserSchema = new mongoose.Schema({
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 UserSchema.plugin(findOrCreate);
 
-const User = mongoose.model("User", UserSchema);
+const User: PassportLocalModel<PassportLocalDocument> = mongoose.model(
+  "User",
+  UserSchema as PassportLocalSchema
+);
 
 export default User;
