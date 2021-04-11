@@ -47,7 +47,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 //Mongoose
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, " MongoDB connection error:"));
+db.on("error", () => console.error(" MongoDB connection error:"));
 db.once("open", () => console.log("Database connected"));
 
 passport.use(new LocalStrategy(User.authenticate()));
