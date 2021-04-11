@@ -1,18 +1,17 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const FacebookStrategy = require("passport-facebook").Strategy;
-const flash = require("connect-flash");
-require("dotenv").config();
+import express from "express";
+import "dotenv/config";
+import mongoose from "mongoose";
+import session from "express-session";
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { Strategy as FacebookStrategy } from "passport-facebook";
+import flash from "connect-flash";
+import User from "./models/User";
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
-const User = require("./models/User");
 
 app.use("/static", express.static("static"));
 app.use(flash());
