@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config";
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
@@ -54,7 +54,7 @@ db.once("open", () => console.log("Database connected"));
 
 passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser((user, done) => {
+passport.serializeUser((user: Document, done) => {
   return done(null, user._id);
 });
 
