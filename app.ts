@@ -84,6 +84,7 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, cb) => {
+      // @ts-expect-error
       User.findOrCreate(
         { googleId: profile.id },
         { name: profile.displayName },
@@ -103,6 +104,7 @@ passport.use(
       profileFields: ["displayName"],
     },
     (accessToken, refreshToken, profile, cb) => {
+      // @ts-expect-error
       User.findOrCreate(
         { facebookId: profile.id },
         { name: profile.displayName },
