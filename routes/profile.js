@@ -88,5 +88,8 @@ router.post('/delete/:id', (req, res) => {
     }
 })
 
+router.get('/delete/instructions', (req, res) => {
+    res.send("Click on 'delete profile' button at the bottom of your profile page to delete your account")
+});
 
 module.exports = router;

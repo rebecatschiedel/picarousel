@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // MongoDB
-mongoose.connect(process.env.MONGODB_URL, {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/users', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false, 
@@ -86,7 +86,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
     profileFields: ['displayName']
 },
 (accessToken, refreshToken, profile, cb) => {
