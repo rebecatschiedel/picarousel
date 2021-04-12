@@ -120,12 +120,19 @@ const photosArray = [];
 const favoritedPhotosArray = [];
 
 // Routes
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/", require("./routes/index"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/users", require("./routes/users"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/auth", require("./routes/auth"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/photo", require("./routes/photo"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/photos", require("./routes/photos"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/profile", require("./routes/profile"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use("/error", require("./routes/error"));
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
