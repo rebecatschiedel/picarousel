@@ -116,8 +116,8 @@ passport.use(
   )
 );
 
-let photosArray = [];
-let favoritedPhotosArray = [];
+const photosArray = [];
+const favoritedPhotosArray = [];
 
 // Routes
 app.use("/", require("./routes/index"));
