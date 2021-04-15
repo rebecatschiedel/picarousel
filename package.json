@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon --ext ts --exec 'ts-node app.ts'"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,23 @@
     "url": "https://github.com/rebecatschiedel/Landing-page/issues"
   },
   "homepage": "https://github.com/rebecatschiedel/Landing-page#readme",
+  "devDependencies": {
+    "@types/connect-flash": "0.0.36",
+    "@types/express": "^4.17.11",
+    "@types/express-session": "^1.17.3",
+    "@types/node": "^10.17.0",
+    "@types/passport-facebook": "^2.1.10",
+    "@types/passport-google-oauth20": "^2.0.7",
+    "@types/passport-local-mongoose": "^4.0.13",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "eslint": "^7.24.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.0.3"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "connect-flash": "^0.1.1",
@@ -32,7 +49,14 @@
     "passport-local-mongoose": "^6.1.0",
     "pug": "^3.0.2"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ]
   }
 }
