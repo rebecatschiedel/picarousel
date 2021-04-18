@@ -54,7 +54,8 @@ db.once("open", () => console.log("Database connected"));
 
 passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser((user: Document, done) => {
+passport.serializeUser((user, done) => {
+  // @ts-expect-error 
   return done(null, user._id);
 });
 
@@ -100,7 +101,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: "http://localhost:3000/auth/facebook/callback",
+      callbackURL: process.env.FACEBOOK_CALLBACK_URL,
       profileFields: ["displayName"],
     },
     (accessToken, refreshToken, profile, cb) => {
