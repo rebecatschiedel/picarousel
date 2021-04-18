@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "lib",
     "alwaysStrict": true,
     "declaration": true,
@@ -32,6 +32,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.ts", "src"],
+  "include": ["**/*.ts"],
   "exclude": ["node_modules", "lib"]
 }
