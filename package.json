@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ext ts --exec 'ts-node app.ts'"
+    "start": "npx ts-node app.ts"
   },
   "repository": {
     "type": "git",
