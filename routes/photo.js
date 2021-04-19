@@ -1,11 +1,9 @@
-const express = require('express');
-const passport = require('passport');
-const router = express.Router();
+import express from "express";
+import { photosArray, favoritedPhotosArray } from "../app";
 
-// User Model
-const User = require('../models/User');
+const photoRouter = express.Router();
 
-router.get('/:id', (req, res) => {
+photoRouter.get('/:id', (req, res) => {
     const selectedIndex = req.params.id;
     
     try {
@@ -25,10 +23,9 @@ router.get('/:id', (req, res) => {
             return res.render('photoCarousel', { title: "Photo Carousel", selectedIndex: selectedIndex, photos: photos });
         }
     } catch(e) {
-        console.log(e);
         return res.redirect('/error/problem');
-    };
+    }
 
 })
  
-module.exports = router;
+export default photoRouter;

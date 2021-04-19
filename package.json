@@ -50,6 +50,10 @@
     "pug": "^3.0.2"
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
     "root": true,
     "parser": "@typescript-eslint/parser",
     "plugins": [

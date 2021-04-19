@@ -1,12 +1,13 @@
-const express = require('express');
-const router = express.Router();
+import express from "express";
 
-router.get('/', (req, res) => {
+const indexRouter = express.Router();
+
+indexRouter.get('/', (req, res) => {
     res.render('index', {title: 'Homepage'})
 });
 
-router.post("/", (req, res) => {
+indexRouter.post("/", (req, res) => {
     res.redirect(`/photos/${req.body.search}`);
 });
 
-module.exports = router;
+export default indexRouter;

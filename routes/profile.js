@@ -1,10 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
+import express from "express";
+import { favoritedPhotosArray } from "../app";
+import "dotenv/config";
+import axios from "axios";
 
-const User = require('../models/User');
+const profileRouter = express.Router();
 
-router.get('/', async (req, res) => {
+// User Model
+import User from "../models/User";
+
+profileRouter.get('/', async (req, res) => {
     if(req.isAuthenticated()) {
         const userId = req.user.id;
         const userObject = await User.find({_id: userId});
@@ -20,6 +24,7 @@ router.get('/', async (req, res) => {
             return data['hits'];
        })
 
+       // eslint-disable-next-line
        favoritedPhotosArray = await Promise.all(photos);
 
        res.render('profile', {title: "Profile", username: userObject[0].name, photos: favoritedPhotosArray, userId: userObject[0]._id});
@@ -29,19 +34,19 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', (req, res) => {
+profileRouter.get('/:id', (req, res) => {
     const selectedIndex = req.params.id;
     
     try {
         return res.render('profileCarousel', { title: "Photo Carousel", selectedIndex: selectedIndex, photos: favoritedPhotosArray });
     } catch(e) {
         return res.redirect('/error/problem');
-    };
+    }
 
 })
 
-
-router.post('/', async (req, res) => {       
+// eslint-disable-next-line
+profileRouter.post('/', async (req, res) => {       
     try {
         const photoId = req.body.id;
         const userId = req.user.id;
@@ -73,8 +78,9 @@ router.post('/', async (req, res) => {
     
 });
 
-router.post('/delete/:id', (req, res) => {
+profileRouter.post('/delete/:id', (req, res) => {
     if(req.isAuthenticated()) {
+        // eslint-disable-next-line
         User.findByIdAndRemove({_id: req.params.id}, (err, result) => {
             if (err) {
                 console.log(err);
@@ -88,8 +94,8 @@ router.post('/delete/:id', (req, res) => {
     }
 })
 
-router.get('/delete/instructions', (req, res) => {
+profileRouter.get('/delete/instructions', (req, res) => {
     res.send("Click on 'delete profile' button at the bottom of your profile page to delete your account")
 });
 
-module.exports = router;
+export default profileRouter;

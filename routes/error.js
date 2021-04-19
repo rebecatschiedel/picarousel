@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+import express from "express";
 
-router.get('/problem', (req, res) => {
+const errorRouter = express.Router();
+
+errorRouter.get('/problem', (req, res) => {
     res.render('error', {title: "OOOPS!!"})
 });
 
-module.exports = router;
+export default errorRouter;

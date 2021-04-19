@@ -1,13 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
-require('dotenv').config();
+import express from "express";
+import { photosArray } from "../app";
+import "dotenv/config";
+import axios from "axios";
+
+const photosRouter = express.Router();
 
 // User Model
-const User = require('../models/User');
+import User from "../models/User";
 
 //photos selection route
-router.get('/', (req, res) => {
+photosRouter.get('/', (req, res) => {
     const API_KEY = process.env.PIXABAY_API_KEY;
     const url = `https://pixabay.com/api/?key=${API_KEY}`;
 
@@ -16,6 +18,7 @@ router.get('/', (req, res) => {
             const response = await axios.get(url);
             const data = response.data;
 
+            // eslint-disable-next-line
             photosArray = data['hits'];
 
             const photos = photosArray;
@@ -46,7 +49,7 @@ router.get('/', (req, res) => {
 });
 
 //photos cards route
-router.get('/:id', (req, res) => {
+photosRouter.get('/:id', (req, res) => {
     const query = req.params.id;
 
     const API_KEY = process.env.PIXABAY_API_KEY;
@@ -56,6 +59,7 @@ router.get('/:id', (req, res) => {
         try {
             const response = await axios.get(url);
             const data = response.data;
+            // eslint-disable-next-line
             photosArray = data['hits'];
             
             
@@ -87,4 +91,4 @@ router.get('/:id', (req, res) => {
     getData(url)
 });
 
-module.exports = router;
+export default photosRouter;

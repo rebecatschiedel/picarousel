@@ -9,6 +9,15 @@ import { Strategy as FacebookStrategy } from "passport-facebook";
 import flash from "connect-flash";
 import User from "./models/User";
 
+import indexRouter from "./routes/index";
+import authRouter from "./routes/auth";
+import errorRouter from "./routes/error";
+import photoRouter from "./routes/photo";
+import photosRouter from "./routes/photos";
+import profileRouter from "./routes/profile";
+import usersRouter from "./routes/users";
+
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -55,7 +64,7 @@ db.once("open", () => console.log("Database connected"));
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser((user, done) => {
-  // @ts-expect-error 
+  // @ts-expect-error undefined value
   return done(null, user._id);
 });
 
@@ -80,7 +89,9 @@ app.use((req, res, next) => {
 passport.use(
   new GoogleStrategy(
     {
+      // @ts-expect-error undefined value
       clientID: process.env.GOOGLE_CLIENT_ID,
+      // @ts-expect-error undefined value
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
@@ -97,6 +108,7 @@ passport.use(
   )
 );
 passport.use(
+  // @ts-expect-error undefined value 
   new FacebookStrategy(
     {
       clientID: process.env.FACEBOOK_APP_ID,
@@ -117,23 +129,17 @@ passport.use(
   )
 );
 
-const photosArray = [];
-const favoritedPhotosArray = [];
+export const photosArray = [];
+export const favoritedPhotosArray = [];
 
 // Routes
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/", require("./routes/index"));
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/users", require("./routes/users"));
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/auth", require("./routes/auth"));
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/photo", require("./routes/photo"));
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/photos", require("./routes/photos"));
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/profile", require("./routes/profile"));
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-app.use("/error", require("./routes/error"));
+
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/auth", authRouter);
+app.use("/photo", photoRouter);
+app.use("/photos", photosRouter);
+app.use("/profile", profileRouter);
+app.use("/error", errorRouter);
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));

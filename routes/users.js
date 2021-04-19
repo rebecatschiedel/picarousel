@@ -1,23 +1,24 @@
-const express = require('express');
-const passport = require('passport');
-const router = express.Router();
-const catchAsync = require('../utils/catchAsync');
+import express from "express";
+import passport from "passport";
+
+
+const usersRouter = express.Router();
 
 // User Model
-const User = require('../models/User');
+import User from "../models/User";
 
 // Login page
-router.get('/login', (req, res) => {
+usersRouter.get('/login', (req, res) => {
     res.render('login', {title: "Login",});
 });
 
 // Register page
-router.get('/register', (req, res) => {
+usersRouter.get('/register', (req, res) => {
     res.render('register', {title: "Register"});
 });
 
 // Register Handle
-router.post('/register', catchAsync(async(req, res, next) => {    
+usersRouter.post('/register', async(req, res, next) => {    
     try {
         const { name, email, password, confirmPassword } = req.body;
         
@@ -37,13 +38,12 @@ router.post('/register', catchAsync(async(req, res, next) => {
         })
     } catch(e) {
         req.flash('error', e.message);
-        console.log(e);
         res.redirect('/users/register');
     }
-}));
+});
 
 // Login handle
-router.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/users/login'}), (req, res) => {
+usersRouter.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/users/login'}), (req, res) => {
     req.flash('success', "Welcome to Picarousel");
 
     const redirectUrl = req.session.returnTo || "/profile";
@@ -53,9 +53,9 @@ router.post('/login', passport.authenticate('local', {failureFlash: true, failur
 });
 
 // Logout handle
-router.get('/logout', (req, res) => {
+usersRouter.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
 
-module.exports = router;
+export default usersRouter;
