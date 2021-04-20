@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "14.15.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app.js",
-    "tsc":"tsc",
-    "postinstall": "npm run tsc && cp -i -v static dist/ &&  cp -i -v views dist/"
+    "postinstall": "tsc && cp -r static dist/ &&  cp -r views dist/"
   },
   "repository": {
     "type": "git",
