@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "lib",
+    "outDir": "dist",
     "alwaysStrict": true,
     "declaration": true,
     "experimentalDecorators": true,
@@ -29,9 +29,9 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react-jsx"
   },
   "include": ["**/*.ts"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "dist"]
 }
