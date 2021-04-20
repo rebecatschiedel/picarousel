@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app.js",
     "tsc":"tsc",
-    "postinstall": "npm run tsc && mv -i -v static dist/ &&  mv -i -v views dist/"
+    "postinstall": "npm run tsc && cp -i -v static dist/ &&  cp -i -v views dist/"
   },
   "repository": {
     "type": "git",
