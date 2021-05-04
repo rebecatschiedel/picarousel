@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config";
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
