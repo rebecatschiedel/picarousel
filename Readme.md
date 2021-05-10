@@ -1,4 +1,4 @@
-[Picarousel]((https://picarousel.herokuapp.com/)
+[Picarousel](https://picarousel.herokuapp.com/)
 
 # Introduction
 
