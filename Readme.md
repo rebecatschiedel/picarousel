@@ -1,3 +1,5 @@
+[Picarousel]((https://picarousel.herokuapp.com/)
+
 # Introduction
 
 This is a full-stack project written in JS and TS, using NodeJs in the backend, MongoDB for database and Pug as the templating engine. It uses a combination of custom CSS and bootstrap for styling. The app is powered by the Pixabay api and allows users to search for images with keywords. Users have the ability to create an account with email or use social logins (Google and Facebook) to save, mark as favorite or remove from favorites the photos they choose.
